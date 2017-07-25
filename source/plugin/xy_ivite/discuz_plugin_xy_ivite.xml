@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X3.1]]></item>
+	<item id="Time"><![CDATA[2017-06-21 16:25]]></item>
+	<item id="From"><![CDATA[¹ì¿ÍÍø_ÖØÇì_Éú»î_Ê±ÉÐ_ÉçÇø_¶¼ÊÐÈÈ±¨¹Ù·½ÍøÕ¾ (http://localhost/)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[0]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[ÏáÓöÑûÇë×¢²á]]></item>
+			<item id="identifier"><![CDATA[xy_ivite]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[xy_ivite/]]></item>
+			<item id="copyright"><![CDATA[cqdsrb]]></item>
+			<item id="modules"><![CDATA[a:0:{}]]></item>
+			<item id="version"><![CDATA[1.0]]></item>
+		</item>
+		<item id="version"><![CDATA[X3.1]]></item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+	</item>
+</root>

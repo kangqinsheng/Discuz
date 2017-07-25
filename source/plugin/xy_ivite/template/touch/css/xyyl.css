@@ -1,0 +1,177 @@
+body {
+	background: #370b61;
+	color: #fff;
+}
+
+#myTab {
+	transform: skew(-5deg);
+	-ms-transform: skew(-5deg);
+	/* IE 9 */
+	-moz-transform: skew(-5deg);
+	/* Firefox */
+	-webkit-transform: skew(-5deg);
+	/* Safari and Chrome */
+	-o-transform: skew(-5deg);
+	/* Opera */
+	text-align: center;
+	margin-bottom: 20px;
+	width: 100%;
+}
+
+#myTab li {
+	display: inline-block;
+	font-size: 16px;
+}
+
+#myTab li a {
+	border: #fff solid 2px;
+	margin-right: -5px;
+    font-weight: bold;
+}
+
+#myTab .active:after {
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-top: #fff solid 10px;
+	border-left: #370b61 solid 10px;
+	border-right: #370b61 solid 10px;
+	border-bottom: #370b61 solid 10px;
+	position: absolute;
+	bottom: -20px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#myTab span {
+	font-size: 30px;
+	color: #ffe902;
+	display: inline-block;
+	float: right;
+	margin-top: 10px;
+	transform: skew(5deg);
+	-ms-transform: skew(5deg);
+	/* IE 9 */
+	-moz-transform: skew(5deg);
+	/* Firefox */
+	-webkit-transform: skew(5deg);
+	/* Safari and Chrome */
+	-o-transform: skew(5deg);
+	/* Opera */
+}
+
+.tc_one {
+	background: #ffe902;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #000;
+	position: absolute;
+	width: 90%;
+	max-height: 90%;
+	overflow: auto;
+}
+
+.modal-body p {
+	text-align: justify;
+}
+
+caption {
+	color: #000;
+}
+
+.table-bordered>thead>tr>th {
+	border: 1px #000 solid;
+	text-align: center;
+}
+
+.table-bordered>tbody>tr>td {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.tc_one_button {
+	position: absolute;
+	background: none;
+	border: 0;
+	font-size: 24px;
+	color: #ffe902;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 42px;
+	right: 0;
+	float: right;
+}
+
+.mt_botton_close {
+	border-radius: 0;
+	background: #000;
+	color: #fff;
+	border: 0;
+	width: 40%;
+	transform: skew(-5deg);
+}
+/*底部邀请*/
+.bottom_yq {
+	background: rgba(0, 0, 0, .6);
+	width: 100%;
+	padding: 15px;
+	position: fixed;
+	bottom: 0;
+}
+
+.yq_button {
+	background: #f00;
+	margin: auto;
+	display: block;
+	line-height: 36px;
+	font-weight: bold;
+	font-size: 18px;
+	letter-spacing: 4px;
+}
+
+
+/*积分榜*/
+
+.jfb {
+	padding: 10px 0px;
+}
+
+.jfb .table-bordered {
+	border: 0;
+}
+
+.jfb .table-bordered>thead>tr>th {
+	border: 0;
+	background: #1d0434;
+	text-align: center;
+	line-height: 30px;
+	font-weight: bold;
+}
+
+.jfb .table-bordered>tbody>tr>td {
+	border: 0;
+	text-align: center;
+	line-height: 26px;
+}
+
+.jfb p {
+	color: #fff;
+	line-height: 30px;
+	display: block;
+	text-align: center;
+	margin-top: 0;
+}
+.jfb p span{
+	font-size: 16px;
+	font-weight: bold;
+	color: #ffe902;
+}
+.table_t1 {
+	background: #4b0e84;
+}
+
+.table_t2 {
+	background: #2e0952;
+}

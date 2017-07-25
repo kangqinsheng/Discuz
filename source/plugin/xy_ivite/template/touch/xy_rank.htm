@@ -1,0 +1,89 @@
+<!-- CSS goes in the document HEAD or added to your external stylesheet -->
+<style type="text/css">
+table {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+table th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+a{
+	text-decoration:none
+}
+</style>
+<script src="http://www.cqdsrb.com.cn/game/js/jQuery.js" type="text/javascript"></script>
+
+<table class="ui small celled table">
+<!--{eval session_start();}-->
+<!--{if !$_SESSION['xypassword']}-->
+<br />
+<form action="" method="post">
+请输入密码<input style="display:none" type="password" name="xypassword"/>
+<input type="password" value="" name="xypassword"  autocomplete="off"/> <input type="submit" value="确认"  name="submit"/>
+</form>
+<!--{/if}-->
+<!--{if $_SESSION['xypassword'] == "xydsrb@#$%2017"}-->
+
+            <thead>
+				<tr>
+				<th>排名</th>
+				<th>ID</th>
+                <th>昵称</th>
+                <th>电话</th>         
+                <th>积分</th>                      
+            </tr></thead>
+            <tbody>
+		   <!--{loop $list $key $data}-->
+		    <tr>
+				<td><!--{echo $key+$start+1}--></td>
+				<td><a href="plugin.php?id=xy_ivite:xy_rank&uid={$data['uid']}">{$data['uid']}</a></td>
+				<td>{$data['nickname']}</td>
+				<td>{$data['username']}</td>
+				<td>{$data['totalscore']}</td>
+			</tr>
+			<!--{/loop}-->
+			</tbody>
+			<!--{/if}-->
+			</table>
+
+			<table class="table table-bordered">
+									<p>当前排名：<span id="rank">第{$rank}名</span>，共计获得积分：<span id="score">{$score}分</span></p>
+									<thead>
+										<tr>
+											<th>排序</th>
+											<th>电话号码</th>
+											<th>进度</th>
+											<th>归属地</th>
+											<th>积分</th>
+										</tr>
+									</thead>
+									<tbody id="mylist">
+									<!--{loop $mylist $key $data}-->
+									<tr>
+										<td>{$data['id']}</td>
+										<td>{$data['ivitephone']}</td>
+										<td>{$data['status']}</td>
+										<td>{$data['area']}</td>
+										<td>{$data['score']}</td>
+									</tr>
+									<!--{/loop}-->
+									</tbody>
+								</table>
+
+			<div style="width:500px;margin-top:20px;">{$multipage}</div>
+</div>

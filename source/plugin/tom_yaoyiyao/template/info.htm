@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+<head>
+<!--{if $isGbk}-->
+<meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<!--{else}-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--{/if}-->
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>{$yaoyiyaoInfo['title']}</title>
+<link href="source/plugin/tom_yaoyiyao/images/bstyle.css" rel="stylesheet" type="text/css" />
+<link href="source/plugin/tom_yaoyiyao/images/styleok.css" rel="stylesheet" type="text/css" />
+<script src="source/plugin/tom_yaoyiyao/images/jquery-1.js" type="text/javascript"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var commonjspath = 'source/plugin/tom_yaoyiyao/images';
+</script>
+<script src="source/plugin/tom_yaoyiyao/images/common.js" type="text/javascript"></script>
+<style>
+body{background: #E84144 !important;}
+</style>
+</head>
+<body>
+
+<div id="pwd" class="pop" style="display:none;">
+  <div class="box"><b class="closeb" onClick="document.getElementById('pwd').style.display='none';" ></b>
+    <h1>{lang tom_yaoyiyao:info_duihuan_title}</h1>
+    <div class="inputqy">
+        <form id="pwd_form">
+        <input type="prizepwd" id="prizepwd" name="prizepwd" placeholder="{lang tom_yaoyiyao:info_duihuan_pwd}" />
+        <input type="hidden" name="act" value="pwd">
+        <input type="hidden" name="zj_id" id="pwd_zj_id" value="0">
+        <input type="hidden" name="yao_id" value="{$yao_id}">
+        <input type="hidden" name="formhash" value="{$formhash}">
+        </form>
+    </div>
+    <div class="but_con">
+      <button class="button_yes get_pwd_btn">{lang tom_yaoyiyao:info_duihuan_btn}</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+	<div class="banner"><img src="{$pic_url}" width="100%"></div>
+	<div class="content">
+	<div class="title"><img src="source/plugin/tom_yaoyiyao/images/title_1.png" width="100%"/></div>
+	<div class="text">{$cjTimesMsg}</div>
+	<div class="title"><img src="source/plugin/tom_yaoyiyao/images/title_2.png" width="100%"/></div>
+	<div class="text">{$yao_content}</div>
+	<div class="title"><img src="source/plugin/tom_yaoyiyao/images/title_3.png" width="100%"/></div>
+	<div class="prize text">
+        <ul>
+            <!--{loop $prizeList $key $val}-->
+            <li>
+                <div class="jptu">
+                    <img src="{$val['prize_pic_url']}" />
+                    <!--<p class="jpgs"></p>-->
+                </div>
+                <p class="jpmc">{$val['prize_title']}</p>
+                <p>{$val['prize_desc']}</p>
+            </li>
+            <!--{/loop}-->
+        </ul>
+    </div>
+    <a id="wdjp"></a>
+	<div class="title"><img src="source/plugin/tom_yaoyiyao/images/title_4.png" width="100%"/></div>
+	<div class="text list">
+		<ul>
+            <!--{if $myZjList}-->
+            <!--{loop $myZjList $key $val}-->
+            <li>
+                <span class="award">{$val['prize_title']}</span>
+                <span class="time">{$val['prize_desc']}</span>
+                <!--{if $val['dh_status'] == 0}-->
+                <span class="button button_01" onclick="pwd('{$val['id']}');">{lang tom_yaoyiyao:info_duihuan_no}</span>
+                <!--{/if}-->
+                <!--{if $val['dh_status'] == 1}-->
+                <span class="button button_02">{lang tom_yaoyiyao:info_duihuan_ok}</span>
+                <!--{/if}-->
+                <div class="clr"></div>
+            </li>
+            <!--{/loop}-->
+            <!--{else}-->
+            <li>{lang tom_yaoyiyao:info_no_zj_list}<div class="clr"></div></li>
+            <!--{/if}-->
+		</ul>
+    </div>
+	<div class="alllist">
+		<div class="title"><img src="source/plugin/tom_yaoyiyao/images/title_5.png" width="100%"/></div>
+		<div class="text list">
+        	<ul>
+                <!--{loop $zjList $key $val}-->
+				<li>
+                	<span class="time fr">{$val['time']}</span>
+                    <span class="phone01">{$val['tel']}</span>
+                    <span class="award">{$val['prize_title']}</span> 
+                    <div class="clr"></div>
+                </li>
+      			<!--{/loop}-->
+     		</ul>
+    	 </div>
+        <div class="pages">
+            <ul class="clearfix">
+                <li style="width: 40%;"><!--{if $page > 1}--><a href="{$prePageUrl}">{lang tom_yaoyiyao:pre_page}</a><!--{else}--><span>{lang tom_yaoyiyao:pre_page}</span><!--{/if}--></li>
+                <li style="width: 20%;"><span>{$page}/{$allPageNum}</span></li>
+                <li style="width: 40%;"><!--{if $showNextPage == 1}--><a href="{$nextPageUrl}">{lang tom_yaoyiyao:next_page}</a><!--{else}--><span>{lang tom_yaoyiyao:next_page}</span><!--{/if}--></li>
+            <div class="clr"></div>
+            </ul>
+        </div>
+	</div>
+</div>
+
+<div class="line"><img src="source/plugin/tom_yaoyiyao/images/line.png" /></div>
+<div class="copyright">{$yaoConfig['copyright']}</div>
+</div>
+
+<script>
+
+function pwd(zj_id){
+    $("#pwd_zj_id").val(zj_id);
+    document.getElementById('pwd').style.display='block';
+}
+
+var submintPwdStatus = 0;
+$(".get_pwd_btn").click( function () { 
+    var prizepwd = $("#prizepwd").val();
+    if(submintPwdStatus == 1){
+        return false;
+    }
+    if(prizepwd == ''){
+        tusi("{lang tom_yaoyiyao:info_must_pwd}");
+        return false;
+    }
+    submintPwdStatus = 1;
+    $.ajax({
+        type: "GET",
+        url: "{$ajaxUrl}",
+        dataType : "json",
+        data: $('#pwd_form').serialize(),
+        success: function(data){
+            submintPwdStatus = 0;
+            if(data.status == 100) {
+                tusi("{lang tom_yaoyiyao:info_duihuan_pwd_err}");
+                setTimeout(function(){document.location.reload();},1888);
+            }else if(data.status == 200){
+                tusi("{lang tom_yaoyiyao:info_duihuan_success}");
+                setTimeout(function(){document.location.reload();},1888);
+            }else{
+                tusi("{lang tom_yaoyiyao:info_duihuan_error}");
+                setTimeout(function(){document.location.reload();},1888);
+            }
+        }
+    });
+});
+
+wx.config({
+    debug: false,
+    appId: '{$wxJssdkConfig["appId"]}',
+    timestamp: {$wxJssdkConfig["timestamp"]},
+    nonceStr: '{$wxJssdkConfig["nonceStr"]}',
+    signature: '{$wxJssdkConfig["signature"]}',
+    jsApiList: [
+      'onMenuShareTimeline',
+      'onMenuShareAppMessage',
+      'hideMenuItems'
+    ]
+});
+wx.ready(function () {
+    <!--{if $yaoConfig['yao_close_fz_llq'] == 1}-->
+    wx.hideMenuItems({
+        menuList: [
+            'menuItem:copyUrl',
+            'menuItem:openWithQQBrowser',
+            'menuItem:share:email',
+            'menuItem:openWithSafari' 
+        ],
+        success: function (res) {
+        },
+        fail: function (res) {
+        }
+    });
+    <!--{/if}-->
+    wx.onMenuShareTimeline({
+        title: '{$shareTitle}',
+        link: '{$shareUrl}', 
+        imgUrl: '{$shareLogo}', 
+        success: function () { 
+            $.get("{$ajaxPyqUrl}");
+        },
+        cancel: function () { 
+        }
+    });
+    wx.onMenuShareAppMessage({
+        title: '{$shareTitle}',
+        desc: '{$shareDesc}',
+        link: '{$shareUrl}',
+        imgUrl: '{$shareLogo}',
+        type: 'link',
+        dataUrl: '',
+        success: function () { 
+            $.get("{$ajaxShareUrl}");
+        },
+        cancel: function () { 
+        }
+    });
+});
+</script>
+</body>
+</html>
